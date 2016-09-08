@@ -1,5 +1,5 @@
 FROM php:5.6-apache
-MAINTAINER Pepsi "maddog@gmail.com"
+MAINTAINER Kikaida "shimabuku65@gmail.com"
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
