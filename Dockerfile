@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 	&& mkdir -p /var/www/html/lychee/log \
 	&& mkdir -p /var/www/html/lychee/backups \
 	&& chmod -R 777 /var/www/html/lychee/public_html/uploads/ \
-	&& chmod -R 777 /var/www/html/lychee/public_html/data
+	&& chmod -R 777 /var/www/html/lychee/public_html/data/
 ADD lychee.conf /etc/apache2/sites-available/
 ADD phpinfo.php /var/www/html/lychee/public_html/
 ADD php.ini /usr/local/etc/php/
