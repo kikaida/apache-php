@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
 		wget \
 		nano \
+		imagemagick \
+		php5-imagick \
     && docker-php-ext-install -j$(nproc) iconv mcrypt mysqli mbstring exif zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
@@ -15,7 +17,9 @@ RUN apt-get update && apt-get install -y \
 	&& mkdir /var/www/html/lychee \
 	&& mkdir -p /var/www/html/lychee/public_html \
 	&& mkdir -p /var/www/html/lychee/log \
-	&& mkdir -p /var/www/html/lychee/backups
+	&& mkdir -p /var/www/html/lychee/backups \
+	&& chmod -R 777 /var/www/html/lychee/public_html/uploads/ \
+	&& chmod -R 777 /var/www/html/lychee/public_html/data
 ADD lychee.conf /etc/apache2/sites-available/
 ADD phpinfo.php /var/www/html/lychee/public_html/
 ADD php.ini /usr/local/etc/php/
