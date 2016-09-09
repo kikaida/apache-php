@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
 		wget \
 		nano \
-		unzip \
+		git \
 		imagemagick \
 		php5-imagick \
     && docker-php-ext-install -j$(nproc) iconv mcrypt mysqli mbstring exif zip \
@@ -19,11 +19,7 @@ RUN apt-get update && apt-get install -y \
 	&& mkdir -p /var/www/html/lychee/public_html \
 	&& mkdir -p /var/www/html/lychee/log \
 	&& mkdir -p /var/www/html/lychee/backups \
-	&& wget -P /var/www/html/lychee/public_html/ https://github.com/electerious/Lychee/archive/master.zip \
-	&& unzip /var/www/html/lychee/public_html/master.zip -d /var/www/html/lychee/public_html/ \
-	&& mv -v /var/www/html/lychee/public_html/Lychee-master/* /var/www/html/lychee/public_html/ \
-	&& rm -rf /var/www/html/lychee/public_html/Lychee-master \
-	&& rm -rf /var/www/html/lychee/public_html/master.zip \
+	&& git clone https://github.com/electerious/Lychee.git /var/www/html/lychee/public_html/ \
 	&& chown -R www-data:www-data /var/www/html/lychee/public_html \
 	&& chmod -R 770 /var/www/html/lychee/public_html \
 	&& chmod -R 777 /var/www/html/lychee/public_html/uploads/ \
